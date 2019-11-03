@@ -21,5 +21,52 @@ app.get('/Api/About', (req, res) => {
         return
     })
   });
-
+  app.get('/Api/Skill',async (req, res) => {
+ 
+    const noteSnapshot = await db.collection('Skill').get();
+    const notes = [];
+    noteSnapshot.forEach((doc) => {
+        notes.push({
+           id: doc.id,
+           Result: doc.data()
+        });
+    });
+    res.json(notes);
+});
+app.get('/Api/Education',async (req, res) => {
+ 
+    const noteSnapshot = await db.collection('Education').get();
+    const notes = [];
+    noteSnapshot.forEach((doc) => {
+        notes.push({
+           id: doc.id,
+           Result: doc.data()
+        });
+    });
+    res.json(notes);
+});
+app.get('/Api/Experience',async (req, res) => {
+ 
+    const noteSnapshot = await db.collection('Experience').get();
+    const notes = [];
+    noteSnapshot.forEach((doc) => {
+        notes.push({
+           id: doc.id,
+           Result: doc.data()
+        });
+    });
+    res.json(notes);
+});
+app.get('/Api/Project',async (req, res) => {
+ 
+    const noteSnapshot = await db.collection('Project').get();
+    const notes = [];
+    noteSnapshot.forEach((doc) => {
+        notes.push({
+           id: doc.id,
+           Result: doc.data()
+        });
+    });
+    res.json(notes);
+});
 exports.IsMe = functions.https.onRequest(app);
